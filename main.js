@@ -1,6 +1,8 @@
 // ------ SELECTORS ------
 
 let buttons = document.querySelectorAll('button');
+let numbers = document.querySelectorAll('.numbers button')
+let display = document.querySelector('.display');
 
 //============================================//
 
@@ -9,13 +11,18 @@ let buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
     button.addEventListener('mousedown', () => {
-        button.className = 'clicked';
+        button.classList.add('clicked');
     })
     button.addEventListener('mouseup', () => {
-        button.className = 'clicked';
-        setTimeout(() => button.classList.remove('clicked'), 50)
+        setTimeout(() => button.classList.remove('clicked'), 75)
     })
     button.addEventListener('mouseleave', () => {
-        setTimeout(() => button.classList.remove('clicked'), 50)
+        setTimeout(() => button.classList.remove('clicked'), 75)
     })
 });
+
+numbers.forEach(number => {
+    number.addEventListener('click', () => {
+        display.textContent += number.textContent;
+    })
+})

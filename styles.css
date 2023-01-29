@@ -15,6 +15,15 @@ button {
     border-radius: 50px;
 }
 
+.basic-operations button.clicked {
+    color: black;
+    background-color: yellow;
+}
+
+#equals.clicked {
+    background-color: red;
+}
+
 button.clicked {
     color: aliceblue;
     background-color: black;
@@ -22,6 +31,8 @@ button.clicked {
 
 .calculator {
     border: 5px solid black;
+    border-radius: 20px;
+    background-color: grey;
     padding: 1rem;
     min-width: 350px;
     min-height: 500px;
@@ -31,20 +42,24 @@ button.clicked {
 
 .display {
     display: flex;
+    background-color: white;
     justify-content: flex-end;
-    padding: 15px;
+    align-items: center;
+    padding: 0px 10px;
+    min-height: 50px;
     border: 2px solid black;
+    font-size: 36px;
 }
 
 .basic-operations {
     display: flex;
     justify-content: space-evenly;
-    padding: .75rem 0px;
+    padding: 1rem 0px;
     gap: .5rem;
 }
 
-.basic-operations div {
-    background-color: rgb(247, 197, 60);
+.basic-operations > * {
+    background-color: rgb(228, 167, 1);
     border: 2px solid black;
 }
 
@@ -75,7 +90,7 @@ button.clicked {
 .third-row > *,
 .fourth-row > * {
     flex: 1;
-    border: 2px solid black;
+    border: 3px solid black;
 }
 
 .fourth-row .zero {
