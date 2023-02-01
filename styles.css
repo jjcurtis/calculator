@@ -93,6 +93,10 @@ button.clicked {
     border: 3px solid black;
 }
 
+.first-row {
+    padding-top: 0px;
+}
+
 .fourth-row .zero {
     flex: 2.5;
 }
