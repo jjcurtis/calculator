@@ -51,16 +51,16 @@ numbers.forEach(number => {
 
         switch (operator) {
             case 1:
-                total = firstNumber + nextNumber;
+                total = Math.round((firstNumber + nextNumber) * 10000) / 10000;
                 break;
             case 2:
-                total = firstNumber - nextNumber;
+                total = Math.round((firstNumber - nextNumber) * 10000) / 10000;
                 break;
             case 3:
-                total = firstNumber * nextNumber;
+                total = Math.round((firstNumber * nextNumber) * 10000) / 10000;
                 break;
             case 4:
-                total = firstNumber / nextNumber;
+                total = Math.round((firstNumber / nextNumber) * 10000) / 10000;
                 break;    
             default:
                 break;
@@ -79,7 +79,6 @@ operations.forEach(operation => {
             display.textContent = total;
             firstNumber = total;
         }
-        return total;
     })
 })
 
@@ -109,4 +108,8 @@ multiply.addEventListener('click', () => {
 divide.addEventListener('click', () => {
     operator = 4;
     return operator;
+})
+
+equals.addEventListener('click', () => {
+    count = 0;
 })
