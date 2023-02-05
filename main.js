@@ -1,7 +1,8 @@
 let count = 0;
+let numCount;
+let decimalClicked = false;
 let firstNumber;
 let nextNumber;
-let numCount;
 let total;
 let displayValue;
 let operator;
@@ -19,6 +20,7 @@ let subtract = document.querySelector('.subtract');
 let multiply = document.querySelector('.multiply');
 let divide = document.querySelector('.divide');
 let equals = document.querySelector('#equals');
+let decimal = document.querySelector('.decimal');
 
 // ------ LISTENERS ------
 
@@ -34,11 +36,17 @@ buttons.forEach(button => {
     })
 });
 
+decimal.addEventListener('click', () => {
+    decimalClicked = true;
+})
+
 numbers.forEach(number => {
     number.addEventListener('click', () => {
         numCount++;
         if (count >= 2 && numCount == 1) {    
             clearDisplay();
+        } else if (decimalClicked == true) {
+            decimal
         }
 
         display.textContent += number.textContent;
@@ -47,6 +55,13 @@ numbers.forEach(number => {
             firstNumber = displayValue;
         } else {
             nextNumber = displayValue;
+        }
+
+        if (nextNumber == 0 && operator == 3) {
+            display.textContent = 'You know nothing will come of this...';
+            setTimeout(() => {
+               clearDisplay(); 
+            }, 2500);
         }
 
         switch (operator) {
@@ -71,6 +86,7 @@ numbers.forEach(number => {
 operations.forEach(operation => {
     operation.addEventListener('click', () => {
         count++;
+        decimalClicked = false;
         numCount = 0;
         if (count == 1) {
             clearDisplay();
