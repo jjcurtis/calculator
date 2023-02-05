@@ -1,5 +1,7 @@
 let count = 0;
-let num2;
+let firstNumber;
+let nextNumber;
+let numCount;
 let total;
 let displayValue;
 let operator;
@@ -34,26 +36,31 @@ buttons.forEach(button => {
 
 numbers.forEach(number => {
     number.addEventListener('click', () => {
+        numCount++;
+        if (count >= 2 && numCount == 1) {    
+            clearDisplay();
+        }
+
         display.textContent += number.textContent;
         displayValue = (+display.textContent);
         if (count == 0) {
-            total = displayValue;
+            firstNumber = displayValue;
         } else {
-            num2 = displayValue;
+            nextNumber = displayValue;
         }
 
         switch (operator) {
             case 1:
-                total += num2;
+                total = firstNumber + nextNumber;
                 break;
             case 2:
-                total -= num2;
+                total = firstNumber - nextNumber;
                 break;
             case 3:
-                total *= num2;
+                total = firstNumber * nextNumber;
                 break;
             case 4:
-                total /= num2;
+                total = firstNumber / nextNumber;
                 break;    
             default:
                 break;
@@ -63,44 +70,43 @@ numbers.forEach(number => {
 
 operations.forEach(operation => {
     operation.addEventListener('click', () => {
-        count = 1;
+        count++;
+        numCount = 0;
+        if (count == 1) {
+            clearDisplay();
+        }
+        else if (count > 1) {
+            display.textContent = total;
+            firstNumber = total;
+        }
         return total;
     })
 })
 
 clear.addEventListener('click', () => {
-    clearDisplay();
     count = 0;
     total = undefined;
-    num2 = undefined;
-    return count;
+    firstNumber = undefined;
+    nextNumber = undefined;
+    operator = undefined;
 })
 
 sum.addEventListener('click', () => {
-    clearDisplay();
     operator = 1;
     return operator;
 })
 
 subtract.addEventListener('click', () => {
-    clearDisplay();
     operator = 2;
     return operator;
 })
 
 multiply.addEventListener('click', () => {
-    clearDisplay();
     operator = 3;
     return operator;
 })
 
 divide.addEventListener('click', () => {
-    clearDisplay();
     operator = 4;
     return operator;
-})
-
-equals.addEventListener('click', () => {
-    clearDisplay();
-    display.textContent = total;
 })
