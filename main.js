@@ -14,6 +14,7 @@ let buttons = document.querySelectorAll('button');
 let numbers = document.querySelectorAll('.numbers button');
 let operations = document.querySelectorAll('.basic-operations button');
 let display = document.querySelector('.display');
+let backspace = document.querySelector('.backspace');
 let clear = document.querySelector('.clear');
 let sum = document.querySelector('.add');
 let subtract = document.querySelector('.subtract');
@@ -45,23 +46,32 @@ numbers.forEach(number => {
         numCount++;
         if (count >= 2 && numCount == 1) {    
             clearDisplay();
-        } else if (decimalClicked == true) {
-            decimal
-        }
+        } 
 
         display.textContent += number.textContent;
+        
+        if (decimalClicked == true) {
+            decimal.textContent = '';
+        }
+        
         displayValue = (+display.textContent);
+        
         if (count == 0) {
             firstNumber = displayValue;
         } else {
             nextNumber = displayValue;
         }
 
-        if (nextNumber == 0 && operator == 3) {
+        if (nextNumber == 0 && operator == 3 || operator == 4) {
             display.textContent = 'You know nothing will come of this...';
             setTimeout(() => {
-               clearDisplay(); 
-            }, 2500);
+                count = 0;
+                total = undefined;
+                firstNumber = undefined;
+                nextNumber = undefined;
+                operator = undefined; 
+                clearDisplay(); 
+            }, 2000);
         }
 
         switch (operator) {
@@ -87,6 +97,7 @@ operations.forEach(operation => {
     operation.addEventListener('click', () => {
         count++;
         decimalClicked = false;
+        decimal.textContent = '.';
         numCount = 0;
         if (count == 1) {
             clearDisplay();
@@ -96,6 +107,13 @@ operations.forEach(operation => {
             firstNumber = total;
         }
     })
+})
+
+backspace.addEventListener('click', () => {
+    firstNumber = (+firstNumber.toString().slice(0,-1));
+    display.textContent = firstNumber;
+    total = firstNumber;
+    displayValue = firstNumber;
 })
 
 clear.addEventListener('click', () => {

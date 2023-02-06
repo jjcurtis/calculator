@@ -103,4 +103,5 @@ button.clicked {
 
 .fourth-row .decimal {
     flex: 1;
+    min-height: 68px;
 }
