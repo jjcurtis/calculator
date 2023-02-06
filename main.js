@@ -62,7 +62,8 @@ numbers.forEach(number => {
             nextNumber = displayValue;
         }
 
-        if (nextNumber == 0 && operator == 3 || operator == 4) {
+        if (nextNumber == 0 && operator == 3 ||
+            nextNumber == 0 &&  operator == 4) {
             display.textContent = 'You know nothing will come of this...';
             setTimeout(() => {
                 count = 0;
